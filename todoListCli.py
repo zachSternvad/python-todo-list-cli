@@ -67,7 +67,7 @@ def mark_completed(index):
 # Display items (tasks)
 def display_items(items):
     completed = load_completed_items()
-    #print(f"\n---TODO LIST---")
+    print(f"\n---TODO LIST---\n")
     for i, item in enumerate(items, 1):
         if item in completed:
             print(f"{i}. {Colors.GREEN}✓ {item} (COMPLETED){Colors.RESET}")
@@ -77,9 +77,8 @@ def display_items(items):
 todo_items = []
      
 while True:
-    print("---Welcome to yor TODO List---")
-    print("\n")
-    print("1. See TODO List")
+    print("\n---Welcome to yor TODO List---")
+    print("\n1. See TODO List")
     print("2. Add item to TODO List")
     print("3. Mark item as completed")
     print("4. Remove item from TODO List")
@@ -89,17 +88,28 @@ while True:
         option = int(input("\n Select an option: "))
         
         if option == 1:
-            print("\n---TODO LIST---")
+            todo_items = load_items()
             display_items(todo_items)
             
         elif option == 2:
-            # Add item
+            new_item = input("Enter the new TODO item: ").strip()
+            if new_item:
+                add_item(new_item)
+                print("Item added!")
+            else:
+                print("Item cannot be empty.")
             
         elif option == 3:
-            # Mark complete
+            todo_items = load_items()
+            display_items(todo_items)
+            index = int(input("Enter the item number to mark as completed: ")) - 1
+            mark_completed(index)
             
         elif option == 4:
-            # Remove item
+            todo_items = load_items()
+            display_items(todo_items)
+            index = int(input("Enter the item number to remove: ")) - 1
+            remove_item(index)
             
         elif option == 5:
             print("Goodbye!")
