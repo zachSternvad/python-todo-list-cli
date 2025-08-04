@@ -48,11 +48,26 @@ def remove_item(index):
         print(f"Removed item: {removed}")
     else:
         print("Invalid index!")
-
+        
+# Mark as complete
+def mark_completed(index):
+    items = load_items()
+    completed = load_completed_items()
+    if 0 <= index < len(items):
+        item = items[index]
+        if item not in completed:
+            completed.append(item)
+            save_completed_items(completed)
+            print(f"Marked as completed: {item}")
+        else:
+            print("Item is already marked as completed")
+    else:
+        print("Invalid index")
+    
 # Display items (tasks)
 def display_items(items):
     completed = load_completed_items()
-    print(f"\n---TODO LIST---")
+    #print(f"\n---TODO LIST---")
     for i, item in enumerate(items, 1):
         if item in completed:
             print(f"{i}. {Colors.GREEN}✓ {item} (COMPLETED){Colors.RESET}")
