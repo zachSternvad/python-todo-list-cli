@@ -77,7 +77,7 @@ def display_items(items):
 todo_items = []
      
 while True:
-    print("\n---Welcome to yor TODO List---")
+    print("\n---Welcome to your TODO List---")
     print("\n1. See TODO List")
     print("2. Add item to TODO List")
     print("3. Mark item as completed")
